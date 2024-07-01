@@ -11,9 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
 @Entity
 @Table(name = "rooms")
 public class Room {
@@ -27,7 +24,7 @@ public class Room {
     private String roomPhotoUrl;
     private String roomDescription;
 
-    @OneToMany(mappedBy = "room", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "room", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     List<Booking> bookings = new ArrayList<>();
 
     @Override
