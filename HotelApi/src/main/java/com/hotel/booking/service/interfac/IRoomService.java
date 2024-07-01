@@ -8,7 +8,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 public interface IRoomService {
-    Response addNewRoom(MultipartFile photo, String roomType, BigDecimal roomPrice, String Description);
+    Response addNewRoom(MultipartFile photo, String roomType, BigDecimal roomPrice, String description);
     List<String> getAllRoomTypes();
     Response getAllRooms();
     Response deleteRoom(Long roomId);
