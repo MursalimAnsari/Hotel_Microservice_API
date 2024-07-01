@@ -17,26 +17,14 @@ import java.util.function.Function;
 @RequiredArgsConstructor
 public class JWTUtils {
 
-    private static final long EXPIRATION_TIME= 1000 * 600 * 24 * 7;
-    private final String SECRET_KEY="AJDSDFHFJ2368SFB3347djfskfho324HRHKDKDFFEWHE59595974DJEJRT47FEJIUFYU53585488JEFERH";
-
     public String generateToken(UserDetails user) {
         return Jwts.builder()
                 .setSubject(user.getUsername())
-                //.claim("authorities", populateAuthorities(user.getAuthorities()))
                 .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
+                .setExpiration(new Date(System.currentTimeMillis() + Constants.EXPIRATION_TIME))
                 .signWith(getSigningKey(), SignatureAlgorithm.HS256)
                 .compact();
     }
-//    private String populateAuthorities(Collection<? extends GrantedAuthority> authorities) {
-//        Set<String> authoritiesSet = new HashSet<>();
-//        for(GrantedAuthority authority: authorities) {
-//            authoritiesSet.add(authority.getAuthority());
-//        }
-//        //USER, ADMIN
-//        return String.join(",", authoritiesSet);
-//    }
 
     private Claims extractAllClaims(String token) {
         return Jwts
@@ -60,7 +48,7 @@ public class JWTUtils {
     }
 
     private Key getSigningKey() {
-        byte[] keyBytes = Decoders.BASE64.decode(SECRET_KEY);
+        byte[] keyBytes = Decoders.BASE64.decode(Constants.SECRET_KEY);
         return Keys.hmacShaKeyFor(keyBytes);
     }
 

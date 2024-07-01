@@ -47,8 +47,8 @@ public class UserService implements IUserService {
             User savedUser = userRepository.save(user);
             UserDto userDto = Utils.mapUserEntityToUserDto(savedUser);
 
-            response.setStatusCode(200);
-            response.setMessage("successful");
+            response.setStatusCode(201);
+            response.setMessage("created user successfully");
             response.setUser(userDto);
 
         }catch (OurException e){
@@ -145,7 +145,7 @@ public class UserService implements IUserService {
                     .orElseThrow(()-> new OurException("User Not Found"));
 
             userRepository.deleteById(Long.valueOf(userId));
-            response.setMessage("successful");
+            response.setMessage("deleted user");
             response.setStatusCode(200);
 
         }catch (OurException e){

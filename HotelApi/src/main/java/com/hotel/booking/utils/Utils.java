@@ -11,10 +11,9 @@ import java.security.SecureRandom;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static com.hotel.booking.utils.Constants.ALPHANUMERIC_STRING;
+
 public class Utils {
-
-    private static final String ALPHANUMERIC_STRING="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-
     private static final SecureRandom secureRandom = new SecureRandom();
 
     public static String generateRandomConfirmationCode(int length){

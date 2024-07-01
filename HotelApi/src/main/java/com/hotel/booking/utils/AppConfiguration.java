@@ -9,19 +9,15 @@ import java.util.*;
 
 @Configuration
 public class AppConfiguration {
-
-
     @Bean
     public Cloudinary cloudinaryInit(){
 
         Map map = new HashMap();
-        map.put("cloud_name","dnsvo6gpd");
-        map.put("api_key","527792358932252");
-        map.put("api_secret","OmUr0_0QMr7enpOZdGIJIrOZIZ8");
+        map.put("cloud_name",Constants.CLOUD_NAME);
+        map.put("api_key",Constants.API_KEY);
+        map.put("api_secret",Constants.API_SECRET);
         map.put("secured", true);
 
         return new Cloudinary(map);
     }
-
-
 }
